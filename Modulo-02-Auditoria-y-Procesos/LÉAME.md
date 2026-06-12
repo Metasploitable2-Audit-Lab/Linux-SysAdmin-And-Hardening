@@ -22,13 +22,16 @@ Con el acceso comprometido, se procedió a auditar la memoria RAM activa del ser
 - **Comando utilizado:** `ps -u operador1`
 - **Resultado:** Se detectó un subproceso oculto ejecutando el comando `sleep 1500`.
 - **Identificación del Objetivo:** El sistema operativo determinó que el **PID exacto** de la amenaza era el **2865**.
+- 
+![Detección del Proceso Malicioso](deteccion.png)
 
 #### B. Mitigación y Limpieza
 Para evitar la persistencia del intruso, se aplicó una señal de terminación forzosa a nivel de kernel (`SIGKILL`).
 
 - **Comando de remediación:** `sudo kill -9 2865`
 - **Verificación:** Al re-ejecutar el escáner `ps -u operador1`, la consola confirmó el estado `Killed` y arrojó una lista limpia. La memoria RAM quedó descontaminada con éxito.
-
+- 
+![Exterminio del Proceso con SIGKILL](mitigacion.png)
 ---
 
 ### 📝 4. Conclusiones de Hardening
